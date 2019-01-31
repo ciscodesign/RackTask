@@ -15,7 +15,7 @@ ogni volta che aggiorno il file, aggiungo alla fine una riga di testo con la dat
 [] release 1.0 
 [] add git configuration
 [] add colours! 
-
+[] projects
 
 <!-- 
 # rake-notes
