@@ -1,18 +1,30 @@
-require 'rake/clean'
+require_relative 'colours'
 task default: :listAll
 
+ROOT = 'RackTasks'
+
 namespace :todo do
-  desc "Crea la cartella TASKS se non esiste già una"
-  task :createList do
-    # esiste la cartella Tasks?
-    # se non esiste => la creo
+
+  desc "RackTasks list init!"
+  task :init do
+    FileUtils.mkdir_p ROOT
+    puts "RackTasks list initialized!".green
   end
 
-  desc "Lista tutti i task"
+  desc "List all tasks"
   task :listAll
 
-  desc "Elimina tutti i task"
-  task :cleanAll
+  desc "Remove any RackTask list"
+  task :clear do
+    if Dir.exist?(ROOT) 
+      FileUtils.remove_dir(ROOT) 
+      puts "RackTasks list cleared".red
+    else
+      puts "No Racktask's list active, at the moment.".yellow
+    end
+    puts "Use init command to start new Racktask list!"
+
+  end
 
   namespace :note do
 
