@@ -42,6 +42,4 @@ namespace :rt do
     puts "Use init command to start a new Racktask list!"
 
   end
-
-
 end

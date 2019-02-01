@@ -1,50 +1,30 @@
 
 # RackTask
-The idea is simple: rake commands to build a todo list
-Il comando di CREA nuovo task, crea un nuovo file txt con la descrizione base del task.
-Per vedere i task listo i file della cartella
-per mettere un task come fatto, come aggiungo il prefisso [DONE] al task
-per mettere un task come iniziato, come aggiungo il prefisso [STARTED] al task
-ogni volta che aggiorno il file, aggiungo alla fine una riga di testo con la datetime attuale
+The idea is simple: rake commands to build and manage a todo list
 
+## NEXT FEATURES
+- add git configuration to save tasks on private repo
+- add projects
 
+`RackTask` is a minimal task manager, built in rake. For Geek only :P
 
-## ROADMAP
+## Available commands
+`rake -T`
 
-[x] add basic features
-[] release 1.0 
-[] add git configuration
-[x] add colours! 
-[] projects
+- `archive[id]`   # Tag a task as [ARCHIVED]_
+- `clear `        # Remove any RackTask list
+- `complete[id]`  # Tag a task as [COMPLETED]_
+- `delete[id]`    # Delete task
+- `init`          # RackTasks list init
+- `list`          # List all tasks
+- `new`           # Crea nuovo task
+- `reset[id]`     # Remove STATES tag
+- `start[id]`    # Tag a task as [STARTED]_
+- `watch[id]`     # Open in terminal the task
 
-<!-- 
-# rake-notes
-
-`rake notes` task for non-Rails' projects (heavily based on Rails' one ;)
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'rake-notes'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install rake-notes
-
-And add this line to your project's Rakefile:
-
-    require 'rake/notes/rake_task'
-
-
-## Acknowledgement
-
-Special thanks to everyone that contributed to the original
-[Rails' code](https://github.com/rails/rails/blob/master/railties/lib/rails/source_annotation_extractor.rb)
+## IMPORTANT
+To run rake tasks with parameters on zsh terminal you have to use syntax like:
+` rake "rt:complete[id]"`
 
 
 ## Contributing
@@ -53,4 +33,8 @@ Special thanks to everyone that contributed to the original
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request -->
+5. Create new Pull Request
+
+## Requests
+Feel free to ask for new features, I will try to do my best! ;)
+

@@ -1,14 +1,13 @@
-
 def files_number
   Rake::FileList["#{ROOT}/*"].count * 10
 end
 
 def get_id(filename)
-  filename[0,2]
+  filename[0, 2]
 end
 
-def write_content(file,content)
-  File.open(file, "a") do |f|
+def write_content(file, content)
+  File.open(file, 'a') do |f|
     f << content
     f << "\n\n"
   end
@@ -17,6 +16,7 @@ end
 def find_task(id)
   puts "searching for #{id}..."
   result = false
+
   Rake::FileList["#{ROOT}/*"].each do |f| 
   
     f.slice!("tasks/")
@@ -28,19 +28,19 @@ def find_task(id)
       puts "founded #{result}"
       break
     end
-
   end
+
   result
 end
 
 def delete_folder(foldername)
 
-  #Are you sure?
+  # Are you sure?
   # Loop until the user supplies a valid option
   begin
     STDOUT.puts "Are you sure to delete #{foldername}? (y/n)"
     input = STDIN.gets.strip.downcase
-  end until %w(y n).include?(input)
+  end until %w[y n].include?(input)
 
   if input == 'y'
     folder_path = (foldername.equal? ROOT) ? ROOT : "#{ROOT}/#{foldername}"
@@ -55,8 +55,8 @@ end
 
 
 def tag_purge(foldername)
-  if STATES.any? {|status| foldername.start_with? status}
-    STATES.any? {|status| foldername.slice! status}
+  if STATES.any? { |status| foldername.start_with? status }
+    STATES.any? { |status| foldername.slice! status }
   end
 end
 
