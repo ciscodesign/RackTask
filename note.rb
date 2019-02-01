@@ -37,7 +37,6 @@ namespace :rt do
     task :delete,[:id] do |t, args|
       id = args[:id]
       foldername = find_task(id)
-      puts foldername
       if foldername 
         delete_folder(foldername)
        else
@@ -55,8 +54,15 @@ namespace :rt do
       end
     end
 
-    desc "Segnala come iniziato il task"
-    task :start,[:id]
+    desc "Tag a task as Started"
+    task :start,[:id] do |t, args|
+      id = args[:id]
+      foldername = find_task(id)
+      if foldername
+        fullpath = "#{ROOT}/#{foldername}" 
+        FileUtils.mv(fullpath, "#{ROOT}/[STARTED]#{foldername}")
+      end
+    end
 
     desc "Segnala come completato il task"
     task :complete,[:id]
