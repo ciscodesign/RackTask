@@ -1,3 +1,4 @@
+
 namespace :rt do
 
     desc 'Crea nuovo task'
@@ -54,19 +55,35 @@ namespace :rt do
       end
     end
 
-    desc "Tag a task as Started"
+    desc "Tag a task as #{STATES[0]}"
     task :start,[:id] do |t, args|
-      id = args[:id]
-      foldername = find_task(id)
-      if foldername
-        fullpath = "#{ROOT}/#{foldername}" 
-        FileUtils.mv(fullpath, "#{ROOT}/[STARTED]#{foldername}")
-      end
+      tag_with_state(args[:id],STATES[0])
+      puts "Task is started, buddy! Let's do it".yellow
+
     end
 
-    desc "Segnala come completato il task"
-    task :complete,[:id]
-    
-    task :create => [:askTitle,:new]
-  
+    desc "Tag a task as #{STATES[1]}"
+    task :complete,[:id] do |t, args|
+      tag_with_state(args[:id],STATES[1])
+      puts "Task is completed! You rock man!".green
+
+    end
+
+    desc "Tag a task as #{STATES[2]}"
+    task :archive,[:id] do |t, args|
+      tag_with_state(args[:id],STATES[2])
+      puts "Task is Archived! Forget about it"
+
+    end
+
+    desc "Remove STATES tag"
+    task :reset,[:id] do |t, args|
+      foldername = find_task(args[:id])
+      if foldername
+        fullpath = "#{ROOT}/#{foldername}"
+        tag_purge(foldername)
+        new_path = "#{ROOT}/#{foldername}"
+        FileUtils.mv(fullpath, new_path)
+      end
+    end  
 end

@@ -11,10 +11,10 @@ ogni volta che aggiorno il file, aggiungo alla fine una riga di testo con la dat
 
 ## ROADMAP
 
-[] add basic features
+[x] add basic features
 [] release 1.0 
 [] add git configuration
-[] add colours! 
+[x] add colours! 
 [] projects
 
 <!-- 
