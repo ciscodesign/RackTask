@@ -26,6 +26,7 @@ def find_task(id)
     compare.slice!("tasks/")
     if get_id(compare).eql? id
       result = f
+      puts "founded #{result}"
       break
     end
 

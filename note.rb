@@ -1,5 +1,4 @@
 namespace :rt do
-  namespace :note do
 
     desc 'Crea nuovo task'
     task :new do
@@ -40,15 +39,21 @@ namespace :rt do
       foldername = find_task(id)
       puts foldername
       if foldername 
-        puts "founded #{foldername}"
         delete_folder(foldername)
        else
-        puts "No task with that id.\n Run rt:list for a full tasks list!"
+        puts "#{"No task with that id.".yellow}\nRun rt:list for a full tasks list!"
       end
     end
 
-    desc "Apre nell'editor di default task"
-    task :watch,[:id]
+    desc "Open in terminal the task"
+    task :watch,[:id] do |t, args|
+      foldername = find_task(args[:id])
+      if foldername
+        puts "------------------------------------------------"
+        sh "cat #{ROOT}/#{foldername}/task.txt"
+        puts "------------------------------------------------"
+      end
+    end
 
     desc "Segnala come iniziato il task"
     task :start,[:id]
@@ -57,5 +62,5 @@ namespace :rt do
     task :complete,[:id]
     
     task :create => [:askTitle,:new]
-  end
+  
 end
