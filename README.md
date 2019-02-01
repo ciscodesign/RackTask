@@ -1,6 +1,11 @@
 
 # RackTask
 The idea is simple: rake commands to build and manage a todo list
+Every task has is own folder, so you can save any attachment.
+Screenshots, ideas, anything!
+
+When a task is completed you can archive - to mantein files - or delete it.
+It's free and it's funny!
 
 ## NEXT FEATURES
 - add git configuration to save tasks on private repo
