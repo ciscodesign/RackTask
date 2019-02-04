@@ -18,7 +18,7 @@ def find_task(id)
   result = false
 
   Rake::FileList["#{ROOT}/*"].each do |f| 
-  
+
     f.slice!("#{ROOT}/")
     compare = f.dup
     tag_purge(compare)
@@ -29,13 +29,11 @@ def find_task(id)
       break
     end
   end
-
   result
 end
 
 def delete_folder(foldername)
 
-  # Are you sure?
   # Loop until the user supplies a valid option
   begin
     STDOUT.puts "Are you sure to delete #{foldername}? (y/n)"
@@ -69,3 +67,39 @@ def tag_with_state(id, state)
     FileUtils.mv(fullpath, new_path)
   end
 end
+
+def get_file_path(foldername)
+  "#{ROOT}/#{foldername}/task.txt"
+end
+
+def get_user_input(question)
+  STDOUT.puts question
+  STDIN.gets.strip
+end
+
+def ask_for(obj,full_filepath)
+  
+  case obj
+    when 'title'
+
+    when 'description'
+      question  = "Ok, what's the stuff?".light_blue
+      ok_answer = "Task created!".green
+
+      content = get_user_input(question)
+      write_content(full_filepath, content)
+      write_content(full_filepath, Time.now)
+      puts ok_answer
+      
+    when 'statement'  
+      ok_answer = "Statement saved!".green
+      question  = "Got an update? Let's see:".light_blue 
+
+      content = get_user_input(question)
+      write_content(full_filepath, "========\n\nStatement #{Time.now}")
+      write_content(full_filepath, content)
+      puts ok_answer
+  end
+
+end
+
