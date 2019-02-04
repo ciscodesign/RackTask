@@ -19,7 +19,7 @@ def find_task(id)
 
   Rake::FileList["#{ROOT}/*"].each do |f| 
   
-    f.slice!("tasks/")
+    f.slice!("#{ROOT}/")
     compare = f.dup
     tag_purge(compare)
 

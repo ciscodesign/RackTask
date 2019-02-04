@@ -51,6 +51,8 @@ namespace :rt do
       puts "------------------------------------------------"
       sh "cat #{ROOT}/#{foldername}/task.txt"
       puts "------------------------------------------------"
+    else
+      puts "File not found"
     end
   end
 
