@@ -1,5 +1,5 @@
 
-ROOT    = 'tasks'
+ROOT    = '/Users/cisco/Dropbox/tasks'
 STATES  = ["[STARTED]_", "[COMPLETED]_", "[ARCHIVED]_"] 
 
 require_relative 'colours'
@@ -26,7 +26,7 @@ namespace :rt do
     files = Rake::FileList["#{ROOT}/*"]
 
     if files.count > 0 
-      puts files.each{|f| f.slice!("tasks/")} 
+      puts files.each{|f| f.slice!("#{ROOT}/")} 
     else
       puts "\nNothing to do, buddy! Have fun!\n\n"
     end
