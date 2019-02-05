@@ -79,5 +79,11 @@ namespace :rt do
       new_path = "#{ROOT}/#{foldername}"
       FileUtils.mv(fullpath, new_path)
     end
-  end  
+  end 
+
+  desc "Get task status"
+  task :status, [:id] do |t, args|
+    foldername = find_task(args[:id])
+    puts " Status is: #{task_status(foldername)}"
+  end 
 end

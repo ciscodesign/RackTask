@@ -1,20 +1,5 @@
-def files_number
-  Rake::FileList["#{ROOT}/*"].count * 10
-end
-
-def get_id(filename)
-  filename[0, 2]
-end
-
-def write_content(file, content)
-  File.open(file, 'a') do |f|
-    f << content
-    f << "\n\n"
-  end
-end
-
 def find_task(id)
-  puts "searching for #{id}..."
+  # puts "searching for #{id}..."
   result = false
 
   Rake::FileList["#{ROOT}/*"].each do |f| 
@@ -25,11 +10,47 @@ def find_task(id)
 
     if get_id(compare).eql? id
       result = f
-      puts "founded #{result}"
+      # puts "founded #{result}"
       break
     end
   end
   result
+end
+
+def files_number
+  Rake::FileList["#{ROOT}/*"].count * 10
+end
+
+def get_id(filename)
+  filename[0, 2]
+end
+
+def show_with_color(task)
+  case task_status(task)
+    when STATES[0]
+      puts task.yellow
+    when STATES[1] 
+      puts task.green
+    when STATES[2]
+      puts task.light_blue  
+  else
+    puts task
+  end
+  
+end
+
+def task_status(foldername)
+  if STATES.any? do |status| 
+      return status if foldername.start_with? status 
+    end
+  end
+end
+
+def write_content(file, content)
+  File.open(file, 'a') do |f|
+    f << content
+    f << "\n\n"
+  end
 end
 
 def delete_folder(foldername)

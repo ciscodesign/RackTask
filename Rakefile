@@ -27,7 +27,12 @@ namespace :rt do
     files = Rake::FileList["#{ROOT}/*"]
 
     if files.count > 0 
-      puts files.each{|f| f.slice!("#{ROOT}/")} 
+      #puts files.each{|f| f.slice!("#{ROOT}/")} 
+      files.each do |f| 
+        f.slice!("#{ROOT}/")
+        show_with_color(f)
+      end
+      
     else
       puts "\nNothing to do, buddy! Have fun!\n\n"
     end
