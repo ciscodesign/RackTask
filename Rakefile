@@ -1,4 +1,4 @@
-ROOT      = '/Users/cisco/Dropbox/tasks'
+ROOT      = 'tasks/'
 STATES    = ['[STARTED]_', '[COMPLETED]_', '[ARCHIVED]_'] 
 OBJECTS   = ['title', 'description', 'statement'] 
 
