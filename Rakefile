@@ -1,10 +1,11 @@
-
-ROOT    = '/Users/cisco/Dropbox/tasks'
-STATES  = ["[STARTED]_", "[COMPLETED]_", "[ARCHIVED]_"] 
+ROOT      = '/Users/cisco/Dropbox/tasks'
+STATES    = ['[STARTED]_', '[COMPLETED]_', '[ARCHIVED]_'] 
+OBJECTS   = ['title', 'description', 'statement'] 
 
 require_relative 'colours'
 require_relative 'helpers'
 require_relative 'note'
+require_relative 'statement'
 
 task default: :listAll
 LAST_ID = files_number + 10

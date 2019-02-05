@@ -20,17 +20,10 @@ namespace :rt do
     # first line is the title
     write_content(full_filepath, title)
 
-    # ask for a description and save into the file
-    STDOUT.puts "Ok, what's the stuff?".light_blue
-    description = STDIN.gets.strip
-    write_content(full_filepath, description)
-
-    # insert last edit datetime
-    write_content(full_filepath, Time.now)
-    puts "Task created!".green
+    ask_for('description', full_filepath)
     puts "A folder #{foldername} is been created. You can save all task-related files here. \n 
-    Remember: by deleting a task, the entire folder will be erased.\n
-    If you want, you can tag the task as 'archived', so files and folder won't be deleted\n\n".yellow
+      Remember: by deleting a task, the entire folder will be erased.\n
+      If you want, you can tag the task as 'archived', so files and folder won't be deleted\n\n".yellow
   end
 
   desc "Delete task"
